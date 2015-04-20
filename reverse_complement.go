@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+
+	"github.com/tmpjr/stringutil"
 )
 
 func main() {
@@ -23,12 +25,7 @@ func main() {
 	pattern = lines[0]
 
 	bases := map[string]string{"A": "T", "T": "A", "C": "G", "G": "C"}
-
-	runes := []rune(pattern)
-	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
-		runes[i], runes[j] = runes[j], runes[i]
-	}
-	reverse = string(runes)
+	reverse = stringutil.Reverse(pattern)
 
 	for i := 0; i < len(reverse); i++ {
 		complement += bases[string(reverse[i])]
