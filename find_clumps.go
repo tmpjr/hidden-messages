@@ -31,46 +31,28 @@ func main() {
 	L, _ := strconv.ParseInt(parts[1], 0, 0)
 	t, _ := strconv.ParseInt(parts[2], 0, 0)
 
-	fmt.Printf("%s\n%d %d %d\n", genome, k, L, t)
+	clumps := findClumps(genome, k, L, t)
+	fmt.Println(clumps)
 }
 
-func patternCount(text string, pattern string) int {
-	count := 0
-	for i := 0; i < len(text)-len(pattern); i++ {
-		if text[i:i+len(pattern)] == pattern {
-			count++
-		}
+func findClumps(genome string, k int64, L int64, t int64) string {
+	var clumps string
+	var i int64
+	//patterns := make(map[string]int64)
+
+	for i = 0; i < int64(len(genome))-L; i++ {
+		fmt.Printf("l:%d::i:%d\n", len(genome), i)
 	}
 
-	return count
-}
-
-func frequentWords(text string, k int64) string {
-	var (
-		i     int64
-		max   int64
-		words string
-		limit int64
-	)
-	limit = int64(len(text)) - k
-	patterns := make(map[string]int64)
-
-	max = 0
-	for i = 0; i < limit; i++ {
-		w := text[i : i+k]
+	/*glue := ""
+	for i = 0; i < L-k; i++ {
+		w := genome[i : i+k]
 		patterns[w] += 1
-		if patterns[w] > max {
-			max = patterns[w]
-		}
-	}
-
-	glue := ""
-	for word, count := range patterns {
-		if count == max {
-			words += glue + word
+		if patterns[w] == t {
+			clumps += glue + w
 			glue = " "
 		}
-	}
+	}*/
 
-	return words
+	return clumps
 }
