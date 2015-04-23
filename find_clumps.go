@@ -33,16 +33,30 @@ func main() {
 
 	clumps := findClumps(genome, k, L, t)
 	fmt.Println(clumps)
+	fmt.Printf("k: %d\nL:%d\nt:%d\nG:%d\n", k, L, t, len(genome))
 }
 
 func findClumps(genome string, k int64, L int64, t int64) string {
 	var clumps string
 	var i int64
 	//patterns := make(map[string]int64)
+	data := make(map[int64]map[string]int64)
 
+	//glue := ""
 	for i = 0; i < int64(len(genome))-L; i++ {
-		fmt.Printf("l:%d::i:%d\n", len(genome), i)
+		m := make(map[string]int64)
+		for j := i; j < L-k; j++ {
+			//fmt.Printf("%d:%d\n", j, j+k)
+			w := genome[j : j+k]
+			m[w] += 1
+			if m[w] >= t {
+				data[i][w] = m[w]
+			}
+		}
+		//fmt.Printf("l:%d::i:%d\n", len(genome), i)
 	}
+
+	fmt.Printf("%v\n", data)
 
 	/*glue := ""
 	for i = 0; i < L-k; i++ {
