@@ -14,7 +14,9 @@ def findClumps(genome, k, L, t):
     clumps = ""
     data = {}
     for i in range(0, len(genome) - L):
-        text = genome[i:L]
+        # text is a genome of length L
+        text = genome[i:i+L]
+        #print(text)
         d = {}
         for y in range(0, len(text) - k):
             c = text[y:y+k]
@@ -27,8 +29,12 @@ def findClumps(genome, k, L, t):
             if d[key] >= t:
                 data[key] = d[key]
 
-    #print(data)
+    glue = ""
+    for clump in data:
+        clumps += glue + clump
+        glue = " "
 
     return clumps
 
 clumps = findClumps(genome, k, L, t)
+print(clumps)
