@@ -3,28 +3,7 @@ import sys
 lines = sys.stdin.read().splitlines()
 
 text = lines[0]
-k = int(lines[1])
 
-def computeFrequency(text, k):
-    frequencies = {} 
-    for i in range(0, 4**k):
-        frequencies[i] = 0
-
-    glue = ""
-    out = ""
-    for y in range(0, len(text) - k+1):
-        pattern = text[y:y+k]
-        n = patternToNumber(pattern)
-        frequencies[n] = frequencies[n] + 1
-        #print(("%s:%d") % (pattern,n))
-
-    out = ""
-    glue = ""
-    for key in frequencies:
-        out += glue + str(frequencies[key])
-        glue = " "
-
-    return out
 
 def symbolToNumber(symbol):
     bases = { "A": 0, "C": 1, "G": 2, "T": 3 }
@@ -56,4 +35,4 @@ def numberToPattern(number, k):
 
     return s[::-1]
 
-print(computeFrequency(text, k))
+print(patternToNumber(text))
