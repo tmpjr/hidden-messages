@@ -27,22 +27,4 @@ def frequentWords(text, k):
 
     return words
 
-def patternToNumber(pattern):
-    bases = { "A": 0, "C": 1, "G": 2, "T": 3 }
-    reverse = pattern[::-1]
-    number = 0
-    for i in reversed(range(0, len(pattern))):
-        base = reverse[i]
-        index = bases[base]
-        #print(("%d * 4**%d") % (index, i))
-        number += index * 4**i
-
-    return number
-
-def numberToPattern(number, k):
-    bases = { 0: "A", 1: "C", 2: "G", 3: "T" }
-
-
-
-#print(frequentWords(text, k))
-print(patternToNumber('ATGCAA'))
+print(frequentWords(text, k))
