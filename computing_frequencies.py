@@ -6,7 +6,7 @@ text = lines[0]
 k = int(lines[1])
 
 def computeFrequency(text, k):
-    frequencies = {} 
+    frequencies = {}
     for i in range(0, 4**k):
         frequencies[i] = 0
 
