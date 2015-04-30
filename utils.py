@@ -56,3 +56,18 @@ def patternToNumber(pattern):
     number = 4 * patternToNumber(pattern) + symbolToNumber(symbol)
 
     return number
+
+def computeSkew(text):
+    skews = [0]
+    skew = 0
+    for i in range(0, len(text)):
+        w = text[i]
+        if w == "C":
+            skew = skew - 1
+        elif w == "G":
+            skew = skew + 1
+        else:
+            skew = skew
+        skews.append(skew)
+
+    return skews
